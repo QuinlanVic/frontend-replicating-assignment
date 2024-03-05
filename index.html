@@ -31,15 +31,18 @@
         );
     }
     .stats-preview {
-      display: flex;
-      /* justify-content: center; */
+      /* display: flex; */
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       background: hsl(245.81deg 38.27% 15.88%);
       max-width: 900px;
-      /* put items in center otherwise big gap before end on left! */
+      /* max-width: 100%; */
+      /* put items in center otherwise big gap before end on left! (flex and grid) */
       align-items: center;
       border-radius: 10px;
       overflow: hidden;
     }
+   
     .social-info {
       /* add padding around top/bottom and left/right sides */
       padding: 16px 48px;
@@ -59,23 +62,18 @@
       line-height: 1.5;
     }
     .social-media-spec {
-      display: flex;
-      justify-content: space-between;
+      /* display: flex; */
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      /* justify-content for positioning of columns (flex, grid does not change it) */
+      /* justify-content: space-between; */
       font-size: 20px;
     }
     
     /* .attribution a { color: hsl(228, 45%, 44%); } */
 
-    .end {
-      color: white;
-      display: flex;
-      justify-content: space-evenly;
-      margin: 0;
-      font-size: 20px;
-    }
     .social-media-number {
       margin-bottom: 0;
-      display: flex;
       font-size: 20px;
       font-weight: 600;
     }
@@ -83,20 +81,46 @@
       text-transform: uppercase;
       margin-top: 4px;
       font-size: 14px;
-      justify-content: space-between;
+      /* justify-content: space-between; */
       color: hsla(0, 0%, 100%, 0.6);
-      display: flex;
+      /* /* display: flex; */
+      /* grid-template-columns: repeat(3, fr);  */
     }
     .image-container {
       background: hsl(277, 64%, 61%);
       height: 400px;
     }
     .pic { 
-      /* hsl(277, 64%, 61%) */
       height: 400px;
+      /* filter on picture */
       mix-blend-mode: luminosity;
       /* border-top-right-radius: 10px; */
       /* border-bottom-right-radius: 10px; */
+    }
+
+    @media (max-width: 800px) {
+      .stats-preview {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+      }
+    }
+    
+    @media (max-width: 485px) {
+      .stats-preview {
+        width: 100%
+      }
+      .social-media-spec {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+      .social-info {
+        width: 100%;
+      }
+      .pic {
+        width: 100%;
+        object-fit: cover;
+      }
     }
   </style>
 </head>
